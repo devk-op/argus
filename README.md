@@ -2,7 +2,7 @@
 
 # Argus
 
-**An openpilot fork with multi-sensor fusion, audio-based driver monitoring, and non-ACC vehicle support.**
+**An openpilot fork with extended sensor fusion and non-ACC vehicle support.**
 
 *Named after Argus Panoptes — the all-seeing giant of Greek mythology.*
 
@@ -15,9 +15,9 @@
 
 ## What is Argus?
 
-Argus is a fork of [comma.ai's openpilot](https://github.com/commaai/openpilot) that extends the base platform with additional sensor inputs, audio-based driver monitoring, and longitudinal support for non-ACC vehicles using a pedal interceptor.
+Argus is a fork of [comma.ai's openpilot](https://github.com/commaai/openpilot) that extends the base platform with additional sensor inputs and longitudinal support for non-ACC vehicles using a pedal interceptor.
 
-openpilot already handles camera-based perception and vehicle control well. Argus adds what it leaves out: blind spot awareness from CAN signals already present in the car, microphone-based driver alertness detection using DSP, and longitudinal control for non-ACC vehicles.
+openpilot handles front-camera perception and vehicle control well. Argus adds what it leaves out: blind spot awareness from CAN signals already present in the car, side camera inputs, and longitudinal control for vehicles without factory ACC.
 
 ---
 
@@ -27,8 +27,8 @@ openpilot already handles camera-based perception and vehicle control well. Argu
 |---|---|---|
 | Non-ACC vehicles | Not supported | Supported via pedal interceptor |
 | Blind spot monitoring | Not used | Reads existing vehicle CAN signals |
-| Driver monitoring | Camera-only (DMS) | Camera + audio (DSP-based) |
-| Sensor fusion | Front cameras + radar | + blind spot CAN + microphone |
+| Side cameras | Not used | USB camera input support |
+| Sensor fusion | Front cameras only | + blind spot CAN + side cameras |
 
 ---
 
@@ -36,7 +36,6 @@ openpilot already handles camera-based perception and vehicle control well. Argu
 
 - [ ] Non-ACC vehicle longitudinal support (pedal interceptor)
 - [ ] Blind spot CAN signal integration for non-ACC vehicles
-- [ ] Audio-based driver alertness detection (DSP + microphone)
 - [ ] Side camera support via USB input
 - [ ] Upstream contributions back to openpilot / opendbc
 
@@ -46,7 +45,7 @@ openpilot already handles camera-based perception and vehicle control well. Argu
 
 - **comma three** — required (same as openpilot)
 - **comma pedal / TinyBear pedal interceptor** — required for non-ACC longitudinal control
-- **USB microphone** — optional, for audio driver monitoring
+- **USB side camera** — optional, for expanded blind spot coverage
 
 ---
 
