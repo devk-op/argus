@@ -2,7 +2,7 @@
 
 # Argus
 
-**An openpilot fork with multi-sensor fusion, audio-based driver monitoring, and GM Bolt EV LT support.**
+**An openpilot fork with multi-sensor fusion, audio-based driver monitoring, and non-ACC vehicle support.**
 
 *Named after Argus Panoptes — the all-seeing giant of Greek mythology.*
 
@@ -15,9 +15,9 @@
 
 ## What is Argus?
 
-Argus is a fork of [comma.ai's openpilot](https://github.com/commaai/openpilot) that extends the base platform with additional sensor inputs, audio-based driver monitoring, and support for the Bolt EV LT (2017–2023) without factory ACC using a pedal interceptor.
+Argus is a fork of [comma.ai's openpilot](https://github.com/commaai/openpilot) that extends the base platform with additional sensor inputs, audio-based driver monitoring, and longitudinal support for non-ACC vehicles using a pedal interceptor.
 
-openpilot already handles camera-based perception and vehicle control well. Argus adds what it leaves out: blind spot awareness from CAN signals already present in the car, microphone-based driver alertness detection using DSP, and longitudinal control for non-ACC GM vehicles.
+openpilot already handles camera-based perception and vehicle control well. Argus adds what it leaves out: blind spot awareness from CAN signals already present in the car, microphone-based driver alertness detection using DSP, and longitudinal control for non-ACC vehicles.
 
 ---
 
@@ -25,7 +25,7 @@ openpilot already handles camera-based perception and vehicle control well. Argu
 
 | Feature | openpilot | Argus |
 |---|---|---|
-| Bolt EV LT (no ACC) | Not supported | Supported via pedal interceptor |
+| Non-ACC vehicles | Not supported | Supported via pedal interceptor |
 | Blind spot monitoring | Not used | Reads existing vehicle CAN signals |
 | Driver monitoring | Camera-only (DMS) | Camera + audio (DSP-based) |
 | Sensor fusion | Front cameras + radar | + blind spot CAN + microphone |
@@ -34,7 +34,7 @@ openpilot already handles camera-based perception and vehicle control well. Argu
 
 ## Roadmap
 
-- [ ] Bolt EV LT longitudinal support (pedal interceptor)
+- [ ] Non-ACC vehicle longitudinal support (pedal interceptor)
 - [ ] Blind spot CAN signal integration for non-ACC vehicles
 - [ ] Audio-based driver alertness detection (DSP + microphone)
 - [ ] Side camera support via USB input
@@ -45,7 +45,7 @@ openpilot already handles camera-based perception and vehicle control well. Argu
 ## Hardware
 
 - **comma three** — required (same as openpilot)
-- **comma pedal / TinyBear pedal interceptor** — required for Bolt EV LT longitudinal control
+- **comma pedal / TinyBear pedal interceptor** — required for non-ACC longitudinal control
 - **USB microphone** — optional, for audio driver monitoring
 
 ---
@@ -60,17 +60,17 @@ cd argus
 # Follow openpilot's setup instructions for your platform
 ```
 
-For Bolt EV LT setup, see [docs/bolt_ev_lt.md](docs/bolt_ev_lt.md) *(coming soon)*.
+Non-ACC vehicle setup guide coming soon.
 
 ---
 
 ## Contributing
 
-Pull requests welcome. If you drive a GM vehicle without ACC and want longitudinal support, open an issue with your CAN fingerprint data.
+Pull requests welcome. If you drive a non-ACC vehicle and want longitudinal support, open an issue with your CAN fingerprint data.
 
 ---
 
 ## Credits
 
 Built on top of [openpilot](https://github.com/commaai/openpilot) by comma.ai (MIT License).
-Bolt pedal interceptor work originally by [@firestar5683](https://github.com/firestar5683) in [sunnypilot](https://github.com/sunnypilot/sunnypilot).
+Pedal interceptor research originally by [@firestar5683](https://github.com/firestar5683) in [sunnypilot](https://github.com/sunnypilot/sunnypilot).
